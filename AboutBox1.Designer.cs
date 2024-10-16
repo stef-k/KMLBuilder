@@ -33,7 +33,6 @@
             labelProductName = new Label();
             labelVersion = new Label();
             labelCopyright = new Label();
-            labelCompanyName = new Label();
             textBoxDescription = new TextBox();
             okButton = new Button();
             tableLayoutPanel.SuspendLayout();
@@ -49,7 +48,6 @@
             tableLayoutPanel.Controls.Add(labelProductName, 1, 0);
             tableLayoutPanel.Controls.Add(labelVersion, 1, 1);
             tableLayoutPanel.Controls.Add(labelCopyright, 1, 2);
-            tableLayoutPanel.Controls.Add(labelCompanyName, 1, 3);
             tableLayoutPanel.Controls.Add(textBoxDescription, 1, 4);
             tableLayoutPanel.Controls.Add(okButton, 1, 5);
             tableLayoutPanel.Dock = DockStyle.Fill;
@@ -57,12 +55,12 @@
             tableLayoutPanel.Margin = new Padding(4, 3, 4, 3);
             tableLayoutPanel.Name = "tableLayoutPanel";
             tableLayoutPanel.RowCount = 6;
-            tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-            tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-            tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-            tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-            tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+            tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 10.03924F));
+            tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 10.0392418F));
+            tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 10.0392418F));
+            tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 2.605863F));
+            tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 57.0032578F));
+            tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 10.0392418F));
             tableLayoutPanel.Size = new Size(487, 307);
             tableLayoutPanel.TabIndex = 0;
             // 
@@ -115,28 +113,16 @@
             labelCopyright.Text = "Copyright";
             labelCopyright.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // labelCompanyName
-            // 
-            labelCompanyName.Dock = DockStyle.Fill;
-            labelCompanyName.Location = new Point(167, 90);
-            labelCompanyName.Margin = new Padding(7, 0, 4, 0);
-            labelCompanyName.MaximumSize = new Size(0, 20);
-            labelCompanyName.Name = "labelCompanyName";
-            labelCompanyName.Size = new Size(316, 20);
-            labelCompanyName.TabIndex = 22;
-            labelCompanyName.Text = "Company Name";
-            labelCompanyName.TextAlign = ContentAlignment.MiddleLeft;
-            // 
             // textBoxDescription
             // 
             textBoxDescription.Dock = DockStyle.Fill;
-            textBoxDescription.Location = new Point(167, 123);
+            textBoxDescription.Location = new Point(167, 101);
             textBoxDescription.Margin = new Padding(7, 3, 4, 3);
             textBoxDescription.Multiline = true;
             textBoxDescription.Name = "textBoxDescription";
             textBoxDescription.ReadOnly = true;
             textBoxDescription.ScrollBars = ScrollBars.Both;
-            textBoxDescription.Size = new Size(316, 147);
+            textBoxDescription.Size = new Size(316, 169);
             textBoxDescription.TabIndex = 23;
             textBoxDescription.TabStop = false;
             textBoxDescription.Text = "Description";
@@ -145,10 +131,10 @@
             // 
             okButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             okButton.DialogResult = DialogResult.Cancel;
-            okButton.Location = new Point(395, 277);
+            okButton.Location = new Point(395, 282);
             okButton.Margin = new Padding(4, 3, 4, 3);
             okButton.Name = "okButton";
-            okButton.Size = new Size(88, 27);
+            okButton.Size = new Size(88, 22);
             okButton.TabIndex = 24;
             okButton.Text = "&OK";
             // 
@@ -182,7 +168,6 @@
         private System.Windows.Forms.Label labelProductName;
         private System.Windows.Forms.Label labelVersion;
         private System.Windows.Forms.Label labelCopyright;
-        private System.Windows.Forms.Label labelCompanyName;
         private System.Windows.Forms.TextBox textBoxDescription;
         private System.Windows.Forms.Button okButton;
     }

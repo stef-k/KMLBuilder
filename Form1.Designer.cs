@@ -28,14 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             statusStrip1 = new StatusStrip();
             statusLabel = new ToolStripStatusLabel();
             menuStrip1 = new MenuStrip();
             αρχείοToolStripMenuItem = new ToolStripMenuItem();
-            άνοιγμαΑρχείουKMLToolStripMenuItem = new ToolStripMenuItem();
+            openKMLToolStripMenuItem = new ToolStripMenuItem();
             toolStripSeparator1 = new ToolStripSeparator();
             saveToolStripMenuItem = new ToolStripMenuItem();
             saveAsToolStripMenuItem = new ToolStripMenuItem();
@@ -74,46 +75,50 @@
             // 
             // αρχείοToolStripMenuItem
             // 
-            αρχείοToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { άνοιγμαΑρχείουKMLToolStripMenuItem, toolStripSeparator1, saveToolStripMenuItem, saveAsToolStripMenuItem, toolStripSeparator2, exitToolStripMenuItem });
+            αρχείοToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { openKMLToolStripMenuItem, toolStripSeparator1, saveToolStripMenuItem, saveAsToolStripMenuItem, toolStripSeparator2, exitToolStripMenuItem });
             αρχείοToolStripMenuItem.Name = "αρχείοToolStripMenuItem";
             αρχείοToolStripMenuItem.Size = new Size(55, 20);
             αρχείοToolStripMenuItem.Text = "Αρχείο";
             // 
-            // άνοιγμαΑρχείουKMLToolStripMenuItem
+            // openKMLToolStripMenuItem
             // 
-            άνοιγμαΑρχείουKMLToolStripMenuItem.Name = "άνοιγμαΑρχείουKMLToolStripMenuItem";
-            άνοιγμαΑρχείουKMLToolStripMenuItem.Size = new Size(191, 22);
-            άνοιγμαΑρχείουKMLToolStripMenuItem.Text = "Άνοιγμα Αρχείου KML";
-            άνοιγμαΑρχείουKMLToolStripMenuItem.Click += άνοιγμαΑρχείουKMLToolStripMenuItem_Click;
+            openKMLToolStripMenuItem.Name = "openKMLToolStripMenuItem";
+            openKMLToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.O;
+            openKMLToolStripMenuItem.Size = new Size(244, 22);
+            openKMLToolStripMenuItem.Text = "Άνοιγμα Αρχείου KML";
+            openKMLToolStripMenuItem.Click += openKMLToolStripMenuItem_Click;
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(188, 6);
+            toolStripSeparator1.Size = new Size(241, 6);
             // 
             // saveToolStripMenuItem
             // 
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            saveToolStripMenuItem.Size = new Size(191, 22);
+            saveToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.S;
+            saveToolStripMenuItem.Size = new Size(244, 22);
             saveToolStripMenuItem.Text = "Αποθήκευση";
             saveToolStripMenuItem.Click += saveToolStripMenuItem_Click;
             // 
             // saveAsToolStripMenuItem
             // 
             saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            saveAsToolStripMenuItem.Size = new Size(191, 22);
+            saveAsToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Shift | Keys.S;
+            saveAsToolStripMenuItem.Size = new Size(244, 22);
             saveAsToolStripMenuItem.Text = "Αποθήκευση ως...";
             saveAsToolStripMenuItem.Click += saveAsToolStripMenuItem_Click;
             // 
             // toolStripSeparator2
             // 
             toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new Size(188, 6);
+            toolStripSeparator2.Size = new Size(241, 6);
             // 
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new Size(191, 22);
+            exitToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Q;
+            exitToolStripMenuItem.Size = new Size(244, 22);
             exitToolStripMenuItem.Text = "Έξοδος";
             exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
@@ -127,32 +132,32 @@
             // πληροφορίεςToolStripMenuItem
             // 
             πληροφορίεςToolStripMenuItem.Name = "πληροφορίεςToolStripMenuItem";
-            πληροφορίεςToolStripMenuItem.Size = new Size(180, 22);
+            πληροφορίεςToolStripMenuItem.Size = new Size(147, 22);
             πληροφορίεςToolStripMenuItem.Text = "Πληροφορίες";
             πληροφορίεςToolStripMenuItem.Click += πληροφορίεςToolStripMenuItem_Click;
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(224, 224, 224);
-            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(224, 224, 224);
+            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = SystemColors.Control;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = SystemColors.Window;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 10F);
-            dataGridViewCellStyle6.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 10F);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.Location = new Point(0, 24);
             dataGridView1.Name = "dataGridView1";
@@ -170,6 +175,7 @@
             Controls.Add(dataGridView1);
             Controls.Add(statusStrip1);
             Controls.Add(menuStrip1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
             Name = "Form1";
             Text = "KML Builder WGS 84";
@@ -190,7 +196,7 @@
         private StatusStrip statusStrip1;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem αρχείοToolStripMenuItem;
-        private ToolStripMenuItem άνοιγμαΑρχείουKMLToolStripMenuItem;
+        private ToolStripMenuItem openKMLToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripMenuItem saveToolStripMenuItem;
         private ToolStripMenuItem saveAsToolStripMenuItem;

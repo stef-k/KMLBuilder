@@ -6,8 +6,51 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Description>Δημιουργία αρχείων KML 2.2 από συντεταγμένες  WGS 84</Description>
-    <Copyright>Stef K</Copyright>
+    <Description>Δημιουργία αρχείων KML 2.2 από συντεταγμένες  WGS 84.
+
+Αποδεκτές τιμές συντεταγμένων:
+Πλάτος σε μοίρες (υποχρεωτικό): π.χ: -85.12345 ή 50
+Μήκος σε μοίρες (υποχρεωτικό): π.χ: -175 ή 111.005
+Υψόμετρο (σε μέτρα): π.χ 12 ή -5.5
+Ετικέτα (προαιρετικό): Σύντομο κείμενο
+
+
+https://github.com/stef-k/KMLBuilder</Description>
+    <Copyright>@2024 Stef K</Copyright>
+    <PackageProjectUrl>https://github.com/stef-k/KMLBuilder</PackageProjectUrl>
+    <PackageIcon>kml-builder.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <ApplicationIcon>kml-builder.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="kml-builder.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="kml-builder.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>

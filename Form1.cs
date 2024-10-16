@@ -13,6 +13,7 @@ namespace KMLBuilder
         public Form1()
         {
             InitializeComponent();
+            _kmlFilePath = null;
 
             // Subscribe to the EditingControlShowing event
             // to check for valid data types in Lat, Long, Elevation inputs
@@ -120,7 +121,7 @@ namespace KMLBuilder
             }
         }
 
-        private void άνοιγμαΑρχείουKMLToolStripMenuItem_Click(object sender, EventArgs e)
+        private void openKMLToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LoadKMLFile();
         }
