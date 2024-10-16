@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Description>Δημιουργία αρχείων KML 2.2 από συντεταγμένες  WGS 84</Description>
+    <Copyright>Stef K</Copyright>
+  </PropertyGroup>
+
+</Project>
