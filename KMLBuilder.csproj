@@ -6,7 +6,10 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Description>Δημιουργία αρχείων KML 2.2 από συντεταγμένες  WGS 84.</Description>
+    <Description>Δημιουργία αρχείων KML 2.2 από συντεταγμένες  WGS 84.
+
+Third Party Libraries:
+CoordinateSharp: https://github.com/Tronald/CoordinateSharp</Description>
     <Copyright>@2024 Stef K</Copyright>
     <PackageProjectUrl>https://github.com/stef-k/KMLBuilder</PackageProjectUrl>
     <PackageIcon>kml-builder.png</PackageIcon>

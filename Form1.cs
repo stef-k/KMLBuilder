@@ -44,7 +44,7 @@ namespace KMLBuilder
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            toolStripComboBoxExportOption.SelectedIndex = 0;
+            
         }
 
         private void dataGridView1_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
@@ -220,7 +220,9 @@ namespace KMLBuilder
                     try
                     {
                         XmlDocument xmlDoc = new XmlDocument();
-                        xmlDoc.Load(filePath);
+                        StreamReader reader = new StreamReader(filePath);
+                        xmlDoc.Load(reader);
+                        reader.Close();
 
                         // Clear existing data
                         var waypoints = waypointsBindingSource.DataSource as BindingList<Waypoint>;
@@ -290,7 +292,7 @@ namespace KMLBuilder
                             writer.WriteLine($@"			<description><![CDATA[<table id='table_data_FGt5HaZr'><tr><td>Name:</td><td><b><input  name='Name' id='input_data_ZT449nsk' disabled value='{details ?? "Χωρίς Όνομα"}'></b></td></tr><tr><td>Categories:</td><td><b><input  name='Categories' id='input_data_DhUTLNDm' disabled value=' '></b></td></tr></table>]]></description>");
                             writer.WriteLine($"    <Point>");
                             writer.WriteLine("<altitudeMode>clampToGround</altitudeMode>");
-                            writer.WriteLine($"      <coordinates>{latitude},{longitude}</coordinates>");
+                            writer.WriteLine($"      <coordinates>{longitude},{latitude}</coordinates>");
                             writer.WriteLine("    </Point>");
                             writer.WriteLine("  </Placemark>");
                         }
