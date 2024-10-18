@@ -1,6 +1,8 @@
 ﻿using System.ComponentModel;
+using System.Globalization;
 using System.Windows.Forms;
 using System.Xml;
+using CoordinateSharp;
 
 namespace KMLBuilder
 {
@@ -16,7 +18,7 @@ namespace KMLBuilder
             _kmlFilePath = null;
 
             // Subscribe to the EditingControlShowing event
-            // to check for valid data types in Lat, Long, Elevation inputs
+            // to check for valid data types in Lat, Long,  inputs
             dataGridView1.EditingControlShowing += new DataGridViewEditingControlShowingEventHandler(dataGridView1_EditingControlShowing);
 
             // Data validation listening
@@ -25,15 +27,24 @@ namespace KMLBuilder
             waypointsBindingSource.DataSource = bindingList;
 
             dataGridView1.DataSource = waypointsBindingSource;
-            dataGridView1.Columns[0].HeaderText = "Πλάτος (Latitude ) - x";
-            dataGridView1.Columns[1].HeaderText = "Μήκος (Longitude) - y";
-            dataGridView1.Columns[2].HeaderText = "Ύψόμετρο (Elevation) - z";
-            dataGridView1.Columns[3].HeaderText = "Ετικέτα";
+            dataGridView1.Columns[0].HeaderText = "Πλάτος (Latitude )";
+            dataGridView1.Columns[0].ToolTipText = "Το πλάτος του σημείου σε μορφή συντεταγμένων WGS84, π.χ: 35.689444";
+            dataGridView1.Columns[1].HeaderText = "Μήκος (Longitude)";
+            dataGridView1.Columns[1].ToolTipText = "Το μήκος του σημείου σε μορφή συντεταγμένων WGS84, π.χ: 139.691667";
+            dataGridView1.Columns[2].HeaderText = "Ετικέτα";
+            dataGridView1.Columns[2].ToolTipText = "Το όνομα που θα φαίνεται στο σημείο.";
+
+            // utility grid setup
+            dataGridViewUtility.Rows.Add("");
+            foreach (DataGridViewColumn dgvc in dataGridViewUtility.Columns)
+            {
+                dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            toolStripComboBoxExportOption.SelectedIndex = 0;
         }
 
         private void dataGridView1_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
@@ -42,8 +53,7 @@ namespace KMLBuilder
             DataGridViewTextBoxEditingControl textBox = e.Control as DataGridViewTextBoxEditingControl;
 
             if (dataGridView1.CurrentCell.ColumnIndex == 0 || // Latitude Column
-                dataGridView1.CurrentCell.ColumnIndex == 1 || // Longitude Column
-                dataGridView1.CurrentCell.ColumnIndex == 2)   // Elevation Column
+                dataGridView1.CurrentCell.ColumnIndex == 1) // Longitude Column
             {
                 textBox.KeyPress -= new KeyPressEventHandler(TextBox_KeyPress);
                 textBox.KeyPress += new KeyPressEventHandler(TextBox_KeyPress);
@@ -94,29 +104,11 @@ namespace KMLBuilder
                     return;
                 }
 
-                // Check if Latitude, Longitude, or Elevation is empty
+                // Check if Latitude or Longitude  is empty
                 if (string.IsNullOrWhiteSpace(e.FormattedValue.ToString()))
                 {
-                    MessageBox.Show("Το Πλάτος (Latitude ), Μήκος (Longitude ) και Υψόμετρο (Elevation), είναι υποχρεωτικά πεδία.");
+                    MessageBox.Show("Το Πλάτος (Latitude ) και το Μήκος (Longitude ), είναι υποχρεωτικά πεδία.");
                     e.Cancel = true; // Cancel the edit
-                }
-
-                // Additional validation for Latitude and Longitude ranges
-                if (e.ColumnIndex == 0) // Latitude
-                {
-                    if (result < -90 || result > 90)
-                    {
-                        MessageBox.Show("Το Πλάτος (Lat) πρέπει να είναι μεταξύ -90 και 90 μοίρες.");
-                        e.Cancel = true; // Cancel the edit
-                    }
-                }
-                else if (e.ColumnIndex == 1) // Longitude
-                {
-                    if (result < -180 || result > 180)
-                    {
-                        MessageBox.Show("Το μήκος (Long) πρέπει να είναι μεταξύ -180 και 180 μοίρες.");
-                        e.Cancel = true; // Cancel the edit
-                    }
                 }
             }
         }
@@ -243,8 +235,6 @@ namespace KMLBuilder
                                 Details = placemark["name"]?.InnerText,
                                 Latitude = Convert.ToDecimal(placemark["Point"]["coordinates"].InnerText.Split(',')[1]),
                                 Longitude = Convert.ToDecimal(placemark["Point"]["coordinates"].InnerText.Split(',')[0]),
-                                Elevation = placemark["Point"]["altitudeMode"]?.InnerText == "absolute" ?
-                                            Convert.ToDecimal(placemark["Point"]["coordinates"].InnerText.Split(',')[2]) : 0
                             };
                             waypoints.Add(waypoint);
                         }
@@ -273,7 +263,15 @@ namespace KMLBuilder
                     writer.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
                     writer.WriteLine("<kml xmlns=\"http://www.opengis.net/kml/2.2\">");
                     writer.WriteLine("<Document>");
-
+                    writer.WriteLine(@"		<ExtendedData>
+			<layerDashFillColor>SOLID</layerDashFillColor>
+			<layerFillColor>000000</layerFillColor>
+			<layerOpacityLineColor>1</layerOpacityLineColor>
+			<layerOpacityColor>1</layerOpacityColor>
+			<layerStrokeColor>3D71FF</layerStrokeColor>
+			<layerWidthColor>1</layerWidthColor>
+			<layerDashline>SOLID</layerDashline>
+		</ExtendedData>");
                     // Write the data from DataGridView
                     foreach (DataGridViewRow row in dataGridView1.Rows)
                     {
@@ -281,18 +279,18 @@ namespace KMLBuilder
 
                         string latitude = row.Cells[0].Value?.ToString();
                         string longitude = row.Cells[1].Value?.ToString();
-                        string elevation = row.Cells[2].Value?.ToString();
-                        string details = row.Cells[3].Value?.ToString();
+                        string details = row.Cells[2].Value?.ToString();
 
-                        // Only include rows with latitude, longitude, and elevation
+                        // Only include rows with latitude and longitude
                         if (!string.IsNullOrWhiteSpace(latitude) &&
-                            !string.IsNullOrWhiteSpace(longitude) &&
-                            !string.IsNullOrWhiteSpace(elevation))
+                            !string.IsNullOrWhiteSpace(longitude))
                         {
                             writer.WriteLine("  <Placemark>");
-                            writer.WriteLine($"    <name>{details ?? "No Name"}</name>");
+                            writer.WriteLine($"    <name>{details ?? "Χωρίς Όνομα"}</name>");
+                            writer.WriteLine($@"			<description><![CDATA[<table id='table_data_FGt5HaZr'><tr><td>Name:</td><td><b><input  name='Name' id='input_data_ZT449nsk' disabled value='{details ?? "Χωρίς Όνομα"}'></b></td></tr><tr><td>Categories:</td><td><b><input  name='Categories' id='input_data_DhUTLNDm' disabled value=' '></b></td></tr></table>]]></description>");
                             writer.WriteLine($"    <Point>");
-                            writer.WriteLine($"      <coordinates>{longitude},{latitude},{elevation}</coordinates>");
+                            writer.WriteLine("<altitudeMode>clampToGround</altitudeMode>");
+                            writer.WriteLine($"      <coordinates>{latitude},{longitude}</coordinates>");
                             writer.WriteLine("    </Point>");
                             writer.WriteLine("  </Placemark>");
                         }
@@ -319,6 +317,138 @@ namespace KMLBuilder
         {
             var about = new AboutBox1();
             about.ShowDialog();
+        }
+
+        private void dataGridViewUtility_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // clear
+            if (e.ColumnIndex == 3)
+            {
+                dataGridViewUtility.Rows.Clear();
+                dataGridViewUtility.Rows.Add("");
+            }
+            // convert
+            if (e.ColumnIndex == 4)
+            {
+                // end edit - commit changes in all cells
+                dataGridViewUtility.EndEdit();
+                try
+                {
+                    var lat = dataGridViewUtility.Rows[e.RowIndex].Cells[0].Value;
+                    var lon = dataGridViewUtility.Rows[e.RowIndex].Cells[1].Value;
+                    var mgrs = dataGridViewUtility.Rows[e.RowIndex].Cells[2].Value;
+                    // if all are filled then inform user to select what to convert
+                    if (lat != null && lon != null && mgrs != null)
+                    {
+                        TaskDialogPage taskDialogPage = new TaskDialogPage()
+                        {
+                            Heading = "Πολλαπλά Δεδομένα",
+                            Text = "Έχετε εισάγει δεδομένα σε όλα τα διαθέσιμα πεδία, " +
+                            "παρακαλώ διαλέξτε τη μετατροπή που θέλετε να εκτελέσετε απο τις παρακάτω επιλογές:",
+                        };
+
+                        TaskDialogButton btnOptionToWGS84 = new TaskDialogButton("Μετατροπή σε WGS 84") { Text = "Μετατροπή σε WGS 84" };
+                        TaskDialogButton btnOptionToMGRS = new TaskDialogButton("Μετατροπή σε MGRS") { Text = "Μετατροπή σε MGRS" };
+                        TaskDialogButton btnCancel = TaskDialogButton.Cancel; // Standard Cancel button
+
+                        taskDialogPage.Buttons.Add(btnOptionToWGS84);
+                        taskDialogPage.Buttons.Add(btnOptionToMGRS);
+                        taskDialogPage.Buttons.Add(btnCancel);
+
+                        TaskDialogButton result = TaskDialog.ShowDialog(taskDialogPage);
+
+                        if (result == btnOptionToWGS84)
+                        {
+                            Coordinate c;
+                            if (Coordinate.TryParse(mgrs.ToString(), out c))
+                            {
+                                dataGridViewUtility.Rows[e.RowIndex].Cells[0].Value = c.Latitude.ToDouble();
+                                dataGridViewUtility.Rows[e.RowIndex].Cells[1].Value = c.Longitude.ToDouble();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Οι Στρατιωτικές συντεταγμένες (MGRS), θα πρέπει να έχουν την εξείς δομή: 35T MF 12345 12345 ΜΕ ΛΑΤΙΝΙΚΟΥΣ ΧΑΡΑΚΤΗΡΕΣ.\n" +
+                                    "Για την ορθή επιλογή των πρώτων ενδεικτών (35T), δείτε τη σχετική εικόνα στη βοήθεια: Universal Transverse Mercator zones.\n" +
+                                    "Τα υπόλοιπα στοιχεία είναι οι συντεταγμένες απο το χάρτη (δίγραμα τετραγώνου,  π.χ. MF & πλάτος - μήκος με ακρίβεια 5 ψηφίων  έκαστο).",
+                                    "Ορθή Μορφή Συντεταγμένων", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                        else if (result == btnOptionToMGRS)
+                        {
+                            double latitude = Convert.ToDouble(lat);
+                            double longitude = Convert.ToDouble(lon);
+                            try
+                            {
+                                Coordinate c = new Coordinate(latitude, longitude);
+                                dataGridViewUtility.Rows[e.RowIndex].Cells[2].Value = c.MGRS.ToString();
+                            }
+                            catch (Exception ex)
+                            {
+                                statusLabel.Text = ex.Message;
+                            }
+                        }
+                        else if (result == btnCancel)
+                        {
+
+                        }
+                    }
+                    // convert to MGRS
+                    if (lat != null && lon != null)
+                    {
+                        double latitude = Convert.ToDouble(lat);
+                        double longitude = Convert.ToDouble(lon);
+                        try
+                        {
+                            Coordinate c = new Coordinate(latitude, longitude);
+                            dataGridViewUtility.Rows[e.RowIndex].Cells[2].Value = c.MGRS.ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                            statusLabel.Text = ex.Message;
+                        }
+                    }
+                    // convert to WGS84
+                    if (mgrs != null)
+                    {
+                        Coordinate c;
+                        if (Coordinate.TryParse(mgrs.ToString(), out c))
+                        {
+                            dataGridViewUtility.Rows[e.RowIndex].Cells[0].Value = c.Latitude.ToDouble();
+                            dataGridViewUtility.Rows[e.RowIndex].Cells[1].Value = c.Longitude.ToDouble();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Οι Στρατιωτικές συντεταγμένες (MGRS), θα πρέπει να έχουν την εξείς δομή: 35T MF 12345 12345 ΜΕ ΛΑΤΙΝΙΚΟΥΣ ΧΑΡΑΚΤΗΡΕΣ.\n" +
+                                "Για την ορθή επιλογή των πρώτων ενδεικτών (35T), δείτε τη σχετική εικόνα στη βοήθεια: Universal Transverse Mercator zones.\n" +
+                                "Τα υπόλοιπα στοιχεία είναι οι συντεταγμένες απο το χάρτη (δίγραμα τετραγώνου,  π.χ. MF & πλάτος - μήκος με ακρίβεια 5 ψηφίων  έκαστο).",
+                                "Ορθή Μορφή Συντεταγμένων", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+
+                }
+                catch
+                {
+                    // probably do nothing a cell or multiple cells in the conversion util are empty 
+                }
+            }
+        }
+
+        private void universalTransverseMercatorZonesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var imagePopUp = new UniversalTransverseMercatorZones();
+            imagePopUp.ShowDialog(this);
+        }
+
+        private void άδειαΧρήσηςToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var licensePopUp = new License();
+            licensePopUp.ShowDialog(this);
+        }
+
+        private void οδηγίεςΧρήσηςToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var helpPopUp = new Help();
+            helpPopUp.ShowDialog(this);
         }
     }
 }

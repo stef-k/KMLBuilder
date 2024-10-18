@@ -117,34 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>132, 17</value>
-  </metadata>
-  <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>247, 17</value>
-  </metadata>
-  <metadata name="WGS84Lat.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="WGS84Lon.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="MGRS.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="ClearBTN.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="CoordinatesConvert.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="richTextBox1.Text" xml:space="preserve">
-    <value>Μετατροπέας από WGS 84 σύστημα συντεταγμένων σε MGRS (Στρατιωτικού τύπου).
-- Εισάγετε Πλάτος &amp; Μήκος στα αντίστοιχα πεδία για μετατροπή σε Στρατιωτικού τύπου.
-- Εισάγετε Στρατιωτικού τύπου στο αντίστοιχο πεδία για μετατροπή σε WGS 84.</value>
+    <value>                     GNU AFFERO GENERAL PUBLIC LICENSE
+                       Version 3, 19 November 2007
+
+Copyright (C) 2024 Stef Kariotidis - stefk.me  
+This license is for free software; you can redistribute it 
+and/or modify it under the terms of the GNU Affero General 
+Public License as published by the Free Software Foundation; 
+either version 3 of the License, or (at your option) any 
+later version.
+
+This software is distributed in the hope that it will be 
+useful, but WITHOUT ANY WARRANTY; without even the implied 
+warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR 
+PURPOSE. See the GNU Affero General Public License for 
+more details.
+
+You should have received a copy of the GNU Affero General 
+Public License along with this software. If not, see 
+&lt;http://www.gnu.org/licenses/&gt;.
+
+If you have any questions or comments about this license, 
+or if you would like to contact the author, you can reach 
+me at:
+
+Stef Kariotidis  
+https://stefk.me
+https://github.com/stef-k
+
+Ο πηγαίος κώδικας, είναι διαθέσιμος στη διεύθυνση:
+https://github.com/stef-k/KMLBuilder</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

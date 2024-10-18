@@ -28,9 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle15 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle16 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle17 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle22 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle23 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle24 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle18 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle19 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle20 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle21 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             statusStrip1 = new StatusStrip();
             statusLabel = new ToolStripStatusLabel();
@@ -44,16 +53,37 @@
             exitToolStripMenuItem = new ToolStripMenuItem();
             βοήθειαToolStripMenuItem = new ToolStripMenuItem();
             πληροφορίεςToolStripMenuItem = new ToolStripMenuItem();
+            toolStripSeparator3 = new ToolStripSeparator();
+            universalTransverseMercatorZonesToolStripMenuItem = new ToolStripMenuItem();
+            toolStripSeparator4 = new ToolStripSeparator();
+            άδειαΧρήσηςToolStripMenuItem = new ToolStripMenuItem();
+            toolStrip1 = new ToolStrip();
+            toolStripLabel1 = new ToolStripLabel();
+            toolStripComboBoxExportOption = new ToolStripComboBox();
+            toolStripLabel2 = new ToolStripLabel();
+            tableLayoutPanel1 = new TableLayoutPanel();
             dataGridView1 = new DataGridView();
+            dataGridViewUtility = new DataGridView();
+            WGS84Lat = new DataGridViewTextBoxColumn();
+            WGS84Lon = new DataGridViewTextBoxColumn();
+            MGRS = new DataGridViewTextBoxColumn();
+            ClearBTN = new DataGridViewButtonColumn();
+            CoordinatesConvert = new DataGridViewButtonColumn();
+            richTextBox1 = new RichTextBox();
+            toolStripSeparator5 = new ToolStripSeparator();
+            οδηγίεςΧρήσηςToolStripMenuItem = new ToolStripMenuItem();
             statusStrip1.SuspendLayout();
             menuStrip1.SuspendLayout();
+            toolStrip1.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewUtility).BeginInit();
             SuspendLayout();
             // 
             // statusStrip1
             // 
             statusStrip1.Items.AddRange(new ToolStripItem[] { statusLabel });
-            statusStrip1.Location = new Point(0, 439);
+            statusStrip1.Location = new Point(0, 589);
             statusStrip1.Name = "statusStrip1";
             statusStrip1.Size = new Size(1084, 22);
             statusStrip1.TabIndex = 0;
@@ -124,7 +154,7 @@
             // 
             // βοήθειαToolStripMenuItem
             // 
-            βοήθειαToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { πληροφορίεςToolStripMenuItem });
+            βοήθειαToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { πληροφορίεςToolStripMenuItem, toolStripSeparator3, οδηγίεςΧρήσηςToolStripMenuItem, toolStripSeparator5, universalTransverseMercatorZonesToolStripMenuItem, toolStripSeparator4, άδειαΧρήσηςToolStripMenuItem });
             βοήθειαToolStripMenuItem.Name = "βοήθειαToolStripMenuItem";
             βοήθειαToolStripMenuItem.Size = new Size(62, 20);
             βοήθειαToolStripMenuItem.Text = "Βοήθεια";
@@ -132,52 +162,247 @@
             // πληροφορίεςToolStripMenuItem
             // 
             πληροφορίεςToolStripMenuItem.Name = "πληροφορίεςToolStripMenuItem";
-            πληροφορίεςToolStripMenuItem.Size = new Size(147, 22);
+            πληροφορίεςToolStripMenuItem.Size = new Size(263, 22);
             πληροφορίεςToolStripMenuItem.Text = "Πληροφορίες";
             πληροφορίεςToolStripMenuItem.Click += πληροφορίεςToolStripMenuItem_Click;
             // 
+            // toolStripSeparator3
+            // 
+            toolStripSeparator3.Name = "toolStripSeparator3";
+            toolStripSeparator3.Size = new Size(260, 6);
+            // 
+            // universalTransverseMercatorZonesToolStripMenuItem
+            // 
+            universalTransverseMercatorZonesToolStripMenuItem.Name = "universalTransverseMercatorZonesToolStripMenuItem";
+            universalTransverseMercatorZonesToolStripMenuItem.Size = new Size(263, 22);
+            universalTransverseMercatorZonesToolStripMenuItem.Text = "Universal Transverse Mercator zones";
+            universalTransverseMercatorZonesToolStripMenuItem.Click += universalTransverseMercatorZonesToolStripMenuItem_Click;
+            // 
+            // toolStripSeparator4
+            // 
+            toolStripSeparator4.Name = "toolStripSeparator4";
+            toolStripSeparator4.Size = new Size(260, 6);
+            // 
+            // άδειαΧρήσηςToolStripMenuItem
+            // 
+            άδειαΧρήσηςToolStripMenuItem.Name = "άδειαΧρήσηςToolStripMenuItem";
+            άδειαΧρήσηςToolStripMenuItem.Size = new Size(263, 22);
+            άδειαΧρήσηςToolStripMenuItem.Text = "Άδεια Χρήσης";
+            άδειαΧρήσηςToolStripMenuItem.Click += άδειαΧρήσηςToolStripMenuItem_Click;
+            // 
+            // toolStrip1
+            // 
+            toolStrip1.GripStyle = ToolStripGripStyle.Hidden;
+            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripLabel1, toolStripComboBoxExportOption, toolStripLabel2 });
+            toolStrip1.Location = new Point(0, 0);
+            toolStrip1.Name = "toolStrip1";
+            toolStrip1.Size = new Size(1084, 25);
+            toolStrip1.TabIndex = 3;
+            toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripLabel1
+            // 
+            toolStripLabel1.Name = "toolStripLabel1";
+            toolStripLabel1.Size = new Size(223, 22);
+            toolStripLabel1.Text = "Ανεστραμένη εξαγωγή (ΕΡΑΤΟΣΘΕΝΗΣ):";
+            // 
+            // toolStripComboBoxExportOption
+            // 
+            toolStripComboBoxExportOption.DropDownStyle = ComboBoxStyle.DropDownList;
+            toolStripComboBoxExportOption.DropDownWidth = 80;
+            toolStripComboBoxExportOption.FlatStyle = FlatStyle.Standard;
+            toolStripComboBoxExportOption.ForeColor = SystemColors.MenuText;
+            toolStripComboBoxExportOption.Items.AddRange(new object[] { "LAT,LON", "LON,LAT" });
+            toolStripComboBoxExportOption.Name = "toolStripComboBoxExportOption";
+            toolStripComboBoxExportOption.Size = new Size(80, 25);
+            toolStripComboBoxExportOption.ToolTipText = "Καθορίζει τη μορφή εξαγωγής δεδομένων Μήκους-Πλάτους ή Πλάτους-Μήκους";
+            // 
+            // toolStripLabel2
+            // 
+            toolStripLabel2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            toolStripLabel2.Name = "toolStripLabel2";
+            toolStripLabel2.Size = new Size(309, 22);
+            toolStripLabel2.Text = "ΧΡΗΣΙΜΟΠΟΙΕΙΣΤΕ ΤΕΛΕΙΕΣ ( . ) ΣΤΟΥΣ ΔΕΚΑΔΙΚΟΥΣ!!!";
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.ColumnCount = 1;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.Controls.Add(toolStrip1, 0, 0);
+            tableLayoutPanel1.Controls.Add(dataGridView1, 0, 3);
+            tableLayoutPanel1.Controls.Add(dataGridViewUtility, 0, 2);
+            tableLayoutPanel1.Controls.Add(richTextBox1, 0, 1);
+            tableLayoutPanel1.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Location = new Point(0, 24);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 4;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 100F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle());
+            tableLayoutPanel1.Size = new Size(1084, 565);
+            tableLayoutPanel1.TabIndex = 4;
+            // 
             // dataGridView1
             // 
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(224, 224, 224);
-            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.BackColor = Color.FromArgb(224, 224, 224);
+            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = SystemColors.Control;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = SystemColors.Control;
+            dataGridViewCellStyle14.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            dataGridViewCellStyle14.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 10F);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle15.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.BackColor = SystemColors.Window;
+            dataGridViewCellStyle15.Font = new Font("Segoe UI", 10F);
+            dataGridViewCellStyle15.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle15.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle15;
             dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(0, 24);
+            dataGridView1.Location = new Point(3, 188);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ScrollBars = ScrollBars.Vertical;
-            dataGridView1.Size = new Size(1084, 415);
+            dataGridView1.Size = new Size(1078, 414);
             dataGridView1.TabIndex = 2;
             dataGridView1.CellEndEdit += dataGridView1_CellEndEdit;
             dataGridView1.DataError += dataGridView1_DataError;
+            // 
+            // dataGridViewUtility
+            // 
+            dataGridViewUtility.AllowUserToAddRows = false;
+            dataGridViewUtility.AllowUserToDeleteRows = false;
+            dataGridViewUtility.AllowUserToResizeColumns = false;
+            dataGridViewUtility.AllowUserToResizeRows = false;
+            dataGridViewCellStyle16.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewUtility.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewUtility.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle17.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle17.BackColor = SystemColors.Control;
+            dataGridViewCellStyle17.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle17.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle17.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = DataGridViewTriState.True;
+            dataGridViewUtility.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewUtility.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewUtility.Columns.AddRange(new DataGridViewColumn[] { WGS84Lat, WGS84Lon, MGRS, ClearBTN, CoordinatesConvert });
+            dataGridViewCellStyle22.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle22.BackColor = SystemColors.Window;
+            dataGridViewCellStyle22.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle22.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle22.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle22.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = DataGridViewTriState.False;
+            dataGridViewUtility.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewUtility.Dock = DockStyle.Fill;
+            dataGridViewUtility.Location = new Point(3, 88);
+            dataGridViewUtility.Name = "dataGridViewUtility";
+            dataGridViewCellStyle23.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = SystemColors.Control;
+            dataGridViewCellStyle23.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle23.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle23.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle23.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = DataGridViewTriState.True;
+            dataGridViewUtility.RowHeadersDefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle24.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewUtility.RowsDefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewUtility.RowTemplate.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewUtility.Size = new Size(1078, 94);
+            dataGridViewUtility.TabIndex = 4;
+            dataGridViewUtility.TabStop = false;
+            dataGridViewUtility.CellContentClick += dataGridViewUtility_CellContentClick;
+            // 
+            // WGS84Lat
+            // 
+            dataGridViewCellStyle18.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle18.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            WGS84Lat.DefaultCellStyle = dataGridViewCellStyle18;
+            WGS84Lat.HeaderText = "WGS84-Πλάτος (Latitude)";
+            WGS84Lat.Name = "WGS84Lat";
+            // 
+            // WGS84Lon
+            // 
+            dataGridViewCellStyle19.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle19.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            WGS84Lon.DefaultCellStyle = dataGridViewCellStyle19;
+            WGS84Lon.HeaderText = "WGS84-Μήκος (Longitude)";
+            WGS84Lon.Name = "WGS84Lon";
+            // 
+            // MGRS
+            // 
+            dataGridViewCellStyle20.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle20.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            MGRS.DefaultCellStyle = dataGridViewCellStyle20;
+            MGRS.HeaderText = "MGRS (Στρατιωτικές)";
+            MGRS.Name = "MGRS";
+            // 
+            // ClearBTN
+            // 
+            dataGridViewCellStyle21.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle21.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle21.SelectionForeColor = Color.Black;
+            ClearBTN.DefaultCellStyle = dataGridViewCellStyle21;
+            ClearBTN.FlatStyle = FlatStyle.System;
+            ClearBTN.HeaderText = "Καθαρισμός Πεδίων";
+            ClearBTN.Name = "ClearBTN";
+            ClearBTN.Resizable = DataGridViewTriState.True;
+            ClearBTN.SortMode = DataGridViewColumnSortMode.Automatic;
+            ClearBTN.Text = "Καθαρισμός";
+            ClearBTN.ToolTipText = "Πατήστε για καθαρισμό πεδίων βοηθήματος μετατροπής συντεταγμένων";
+            ClearBTN.UseColumnTextForButtonValue = true;
+            // 
+            // CoordinatesConvert
+            // 
+            CoordinatesConvert.HeaderText = "Μετατροπή Συντεταγμένων";
+            CoordinatesConvert.Name = "CoordinatesConvert";
+            CoordinatesConvert.Resizable = DataGridViewTriState.True;
+            CoordinatesConvert.SortMode = DataGridViewColumnSortMode.Automatic;
+            CoordinatesConvert.Text = "Μετατροπή";
+            CoordinatesConvert.ToolTipText = "Πατήστε για μετατροπή συντεταγμένων";
+            CoordinatesConvert.UseColumnTextForButtonValue = true;
+            // 
+            // richTextBox1
+            // 
+            richTextBox1.Dock = DockStyle.Fill;
+            richTextBox1.Location = new Point(3, 28);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.Size = new Size(1078, 54);
+            richTextBox1.TabIndex = 5;
+            richTextBox1.TabStop = false;
+            richTextBox1.Text = resources.GetString("richTextBox1.Text");
+            // 
+            // toolStripSeparator5
+            // 
+            toolStripSeparator5.Name = "toolStripSeparator5";
+            toolStripSeparator5.Size = new Size(260, 6);
+            // 
+            // οδηγίεςΧρήσηςToolStripMenuItem
+            // 
+            οδηγίεςΧρήσηςToolStripMenuItem.Name = "οδηγίεςΧρήσηςToolStripMenuItem";
+            οδηγίεςΧρήσηςToolStripMenuItem.Size = new Size(263, 22);
+            οδηγίεςΧρήσηςToolStripMenuItem.Text = "Οδηγίες Χρήσης";
+            οδηγίεςΧρήσηςToolStripMenuItem.Click += οδηγίεςΧρήσηςToolStripMenuItem_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1084, 461);
-            Controls.Add(dataGridView1);
+            ClientSize = new Size(1084, 611);
+            Controls.Add(tableLayoutPanel1);
             Controls.Add(statusStrip1);
             Controls.Add(menuStrip1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
             Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "KML Builder WGS 84";
             FormClosing += Form1_FormClosing;
             Load += Form1_Load;
@@ -186,7 +411,12 @@
             statusStrip1.PerformLayout();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            toolStrip1.ResumeLayout(false);
+            toolStrip1.PerformLayout();
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewUtility).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -204,7 +434,25 @@
         private ToolStripMenuItem exitToolStripMenuItem;
         private ToolStripMenuItem βοήθειαToolStripMenuItem;
         private ToolStripMenuItem πληροφορίεςToolStripMenuItem;
-        private DataGridView dataGridView1;
         private ToolStripStatusLabel statusLabel;
+        private ToolStrip toolStrip1;
+        private ToolStripLabel toolStripLabel1;
+        private ToolStripComboBox toolStripComboBoxExportOption;
+        private TableLayoutPanel tableLayoutPanel1;
+        private DataGridView dataGridViewUtility;
+        private RichTextBox richTextBox1;
+        private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn WGS84Lat;
+        private DataGridViewTextBoxColumn WGS84Lon;
+        private DataGridViewTextBoxColumn MGRS;
+        private DataGridViewButtonColumn ClearBTN;
+        private DataGridViewButtonColumn CoordinatesConvert;
+        private ToolStripLabel toolStripLabel2;
+        private ToolStripMenuItem universalTransverseMercatorZonesToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator3;
+        private ToolStripMenuItem άδειαΧρήσηςToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator4;
+        private ToolStripMenuItem οδηγίεςΧρήσηςToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator5;
     }
 }

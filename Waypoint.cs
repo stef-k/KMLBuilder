@@ -10,7 +10,6 @@ namespace KMLBuilder
     {
         public decimal Latitude { get; set; }
         public decimal Longitude { get; set; }
-        public decimal Elevation {  get; set; }
         public string? Details { get; set; }
 
     }

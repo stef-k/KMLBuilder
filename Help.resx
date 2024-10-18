@@ -117,34 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>132, 17</value>
-  </metadata>
-  <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>247, 17</value>
-  </metadata>
-  <metadata name="WGS84Lat.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="WGS84Lon.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="MGRS.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="ClearBTN.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="CoordinatesConvert.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="richTextBox1.Text" xml:space="preserve">
-    <value>Μετατροπέας από WGS 84 σύστημα συντεταγμένων σε MGRS (Στρατιωτικού τύπου).
-- Εισάγετε Πλάτος &amp; Μήκος στα αντίστοιχα πεδία για μετατροπή σε Στρατιωτικού τύπου.
-- Εισάγετε Στρατιωτικού τύπου στο αντίστοιχο πεδία για μετατροπή σε WGS 84.</value>
+    <value>1. ΧΡΗΣΗ ΔΕΚΑΔΙΚΩΝ
+
+Οι συντεταγμένες, αποτυπώνονται στην εφαρμογή ως δεκαδικοί αριθμοί.
+Χρησιμοποιείστε πάντα και παντού τελεία ( . ) για διαχωρισμό των δεκαδικών όχι κόμμα ( , )
+    Παράδειγμα: 40.0123 24.340
+
+2. ΜΕΤΑΤΡΟΠΕΑΣ WGS 84 - MGRS (Στρατιωτικό Σύστημα Συντεταγμένων)
+
+Η πρώτη σειρά πεδίων, είναι προαιρετική και χρησιμοποιείται για τη μετατροπή μεταξύ των
+συστημάτων συντεταγμένων WGS 84 και MGRS.
+
+3. ΔΗΜΙΡΟΥΡΓΙΑ ΑΡΧΕΙΩΝ KML
+
+Για τη δημιουργία αρχείων KML, εισάγετε τα σημεία 1 σε κάθε γραμμή του αντίστοιχου πίνακα.
+Χρησιμοποιείστε αποκλειστικά τελείες ως διαχωριστικά των δεκαδικών αριθμών.
+Από το μενού, πατήστε αποθήκευση ως για να επιλέξετε το φάκελο και να εισάγετε το όνομα αρχείου που επιθυμείτε.
+
+4. ΕΠΕΞΕΡΓΑΣΙΑ ΑΡΧΕΙΩΝ KML
+
+Από το μενού, πατήστε άνοιγμα και επιλέξτε ένα αρχείο KML (.kml) που έχετε δημιουργήσει με την εφαρμογή.
+
+5. ΕΚΔΟΣΗ ΑΡΧΕΙΩΝ KML
+
+Η εφαρμογή, εξάγει αρχεία KML με το πρότυπο KML 2.2. Πληροφορίες μπορείτε να βρείτε στους συνδέσμους:
+
+https://www.ogc.org/publications/standard/kml/
+https://developers.google.com/kml/documentation/kmlreference</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

@@ -6,25 +6,21 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Description>Δημιουργία αρχείων KML 2.2 από συντεταγμένες  WGS 84.
-
-Αποδεκτές τιμές συντεταγμένων:
-Πλάτος σε μοίρες (υποχρεωτικό): π.χ: -85.12345 ή 50
-Μήκος σε μοίρες (υποχρεωτικό): π.χ: -175 ή 111.005
-Υψόμετρο (σε μέτρα): π.χ 12 ή -5.5
-Ετικέτα (προαιρετικό): Σύντομο κείμενο
-
-
-https://github.com/stef-k/KMLBuilder</Description>
+    <Description>Δημιουργία αρχείων KML 2.2 από συντεταγμένες  WGS 84.</Description>
     <Copyright>@2024 Stef K</Copyright>
     <PackageProjectUrl>https://github.com/stef-k/KMLBuilder</PackageProjectUrl>
     <PackageIcon>kml-builder.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <ApplicationIcon>kml-builder.ico</ApplicationIcon>
+    <RepositoryUrl>https://github.com/stef-k/KMLBuilder</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
     <Content Include="kml-builder.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CoordinateSharp" Version="2.24.2.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -50,6 +46,9 @@ https://github.com/stef-k/KMLBuilder</Description>
     <None Update="README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
+    </None>
+    <None Update="Universal_Transverse_Mercator_zones.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 

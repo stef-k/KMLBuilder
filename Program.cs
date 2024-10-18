@@ -1,3 +1,5 @@
+using System.Globalization;
+
 namespace KMLBuilder
 {
     internal static class Program
