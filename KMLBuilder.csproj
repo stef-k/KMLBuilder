@@ -49,6 +49,9 @@ CoordinateSharp: https://github.com/Tronald/CoordinateSharp</Description>
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
+    <None Update="KMLBuilder.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
