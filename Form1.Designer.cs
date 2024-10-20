@@ -50,6 +50,9 @@
             saveToolStripMenuItem = new ToolStripMenuItem();
             saveAsToolStripMenuItem = new ToolStripMenuItem();
             toolStripSeparator2 = new ToolStripSeparator();
+            saveAsText = new ToolStripMenuItem();
+            saveAsCSV = new ToolStripMenuItem();
+            toolStripSeparator6 = new ToolStripSeparator();
             exitToolStripMenuItem = new ToolStripMenuItem();
             βοήθειαToolStripMenuItem = new ToolStripMenuItem();
             πληροφορίεςToolStripMenuItem = new ToolStripMenuItem();
@@ -68,6 +71,7 @@
             MGRS = new DataGridViewTextBoxColumn();
             ClearBTN = new DataGridViewButtonColumn();
             CoordinatesConvert = new DataGridViewButtonColumn();
+            AddToTable = new DataGridViewButtonColumn();
             richTextBox1 = new RichTextBox();
             dataGridView1 = new DataGridView();
             label1 = new Label();
@@ -104,7 +108,7 @@
             // 
             // αρχείοToolStripMenuItem
             // 
-            αρχείοToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { openKMLToolStripMenuItem, toolStripSeparator1, saveToolStripMenuItem, saveAsToolStripMenuItem, toolStripSeparator2, exitToolStripMenuItem });
+            αρχείοToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { openKMLToolStripMenuItem, toolStripSeparator1, saveToolStripMenuItem, saveAsToolStripMenuItem, toolStripSeparator2, saveAsText, saveAsCSV, toolStripSeparator6, exitToolStripMenuItem });
             αρχείοToolStripMenuItem.Name = "αρχείοToolStripMenuItem";
             αρχείοToolStripMenuItem.Size = new Size(55, 20);
             αρχείοToolStripMenuItem.Text = "Αρχείο";
@@ -113,42 +117,67 @@
             // 
             openKMLToolStripMenuItem.Name = "openKMLToolStripMenuItem";
             openKMLToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.O;
-            openKMLToolStripMenuItem.Size = new Size(244, 22);
+            openKMLToolStripMenuItem.Size = new Size(316, 22);
             openKMLToolStripMenuItem.Text = "Άνοιγμα Αρχείου KML";
+            openKMLToolStripMenuItem.ToolTipText = "Άνοιγμα αρχείου KML";
             openKMLToolStripMenuItem.Click += openKMLToolStripMenuItem_Click;
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(241, 6);
+            toolStripSeparator1.Size = new Size(313, 6);
             // 
             // saveToolStripMenuItem
             // 
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             saveToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.S;
-            saveToolStripMenuItem.Size = new Size(244, 22);
-            saveToolStripMenuItem.Text = "Αποθήκευση";
+            saveToolStripMenuItem.Size = new Size(316, 22);
+            saveToolStripMenuItem.Text = "Αποθήκευση αρχείου KML";
+            saveToolStripMenuItem.ToolTipText = "Αποθήκευση του αρχείου";
             saveToolStripMenuItem.Click += saveToolStripMenuItem_Click;
             // 
             // saveAsToolStripMenuItem
             // 
             saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
             saveAsToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Shift | Keys.S;
-            saveAsToolStripMenuItem.Size = new Size(244, 22);
-            saveAsToolStripMenuItem.Text = "Αποθήκευση ως...";
+            saveAsToolStripMenuItem.Size = new Size(316, 22);
+            saveAsToolStripMenuItem.Text = "Αποθήκευση αρχείου KML ως...";
+            saveAsToolStripMenuItem.ToolTipText = "Αποθήκευση ως, με δυνατότητα εισαγωγής ονόματος αρχείου και τοποθεσίας αποθήκευσης";
             saveAsToolStripMenuItem.Click += saveAsToolStripMenuItem_Click;
             // 
             // toolStripSeparator2
             // 
             toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new Size(241, 6);
+            toolStripSeparator2.Size = new Size(313, 6);
+            // 
+            // saveAsText
+            // 
+            saveAsText.Name = "saveAsText";
+            saveAsText.Size = new Size(316, 22);
+            saveAsText.Text = "Εξαγωγή Αρχείου σε Κείμενο";
+            saveAsText.ToolTipText = "Εξαγωγή του αρχείου σε μορφή κειμένου";
+            saveAsText.Click += saveAsText_Click;
+            // 
+            // saveAsCSV
+            // 
+            saveAsCSV.Name = "saveAsCSV";
+            saveAsCSV.Size = new Size(316, 22);
+            saveAsCSV.Text = "Εξαγωγή Αρχείου ως CSV";
+            saveAsCSV.ToolTipText = "Εξαγωγή του αρχείου σε μορφή CSV, χρήσιμη για άνοιγμα στο EXCEL";
+            saveAsCSV.Click += saveAsCSV_Click;
+            // 
+            // toolStripSeparator6
+            // 
+            toolStripSeparator6.Name = "toolStripSeparator6";
+            toolStripSeparator6.Size = new Size(313, 6);
             // 
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             exitToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Q;
-            exitToolStripMenuItem.Size = new Size(244, 22);
+            exitToolStripMenuItem.Size = new Size(316, 22);
             exitToolStripMenuItem.Text = "Έξοδος";
+            exitToolStripMenuItem.ToolTipText = "Τερματισμός εφαρμογής. Προσοχή δεν αποθηκεύει αυτόματα κατα το κλείσιμο!!!";
             exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
             // βοήθειαToolStripMenuItem
@@ -161,43 +190,43 @@
             // πληροφορίεςToolStripMenuItem
             // 
             πληροφορίεςToolStripMenuItem.Name = "πληροφορίεςToolStripMenuItem";
-            πληροφορίεςToolStripMenuItem.Size = new Size(263, 22);
+            πληροφορίεςToolStripMenuItem.Size = new Size(308, 22);
             πληροφορίεςToolStripMenuItem.Text = "Πληροφορίες";
             πληροφορίεςToolStripMenuItem.Click += πληροφορίεςToolStripMenuItem_Click;
             // 
             // toolStripSeparator3
             // 
             toolStripSeparator3.Name = "toolStripSeparator3";
-            toolStripSeparator3.Size = new Size(260, 6);
+            toolStripSeparator3.Size = new Size(305, 6);
             // 
             // οδηγίεςΧρήσηςToolStripMenuItem
             // 
             οδηγίεςΧρήσηςToolStripMenuItem.Name = "οδηγίεςΧρήσηςToolStripMenuItem";
-            οδηγίεςΧρήσηςToolStripMenuItem.Size = new Size(263, 22);
+            οδηγίεςΧρήσηςToolStripMenuItem.Size = new Size(308, 22);
             οδηγίεςΧρήσηςToolStripMenuItem.Text = "Οδηγίες Χρήσης";
             οδηγίεςΧρήσηςToolStripMenuItem.Click += οδηγίεςΧρήσηςToolStripMenuItem_Click;
             // 
             // toolStripSeparator5
             // 
             toolStripSeparator5.Name = "toolStripSeparator5";
-            toolStripSeparator5.Size = new Size(260, 6);
+            toolStripSeparator5.Size = new Size(305, 6);
             // 
             // universalTransverseMercatorZonesToolStripMenuItem
             // 
             universalTransverseMercatorZonesToolStripMenuItem.Name = "universalTransverseMercatorZonesToolStripMenuItem";
-            universalTransverseMercatorZonesToolStripMenuItem.Size = new Size(263, 22);
-            universalTransverseMercatorZonesToolStripMenuItem.Text = "Universal Transverse Mercator zones";
+            universalTransverseMercatorZonesToolStripMenuItem.Size = new Size(308, 22);
+            universalTransverseMercatorZonesToolStripMenuItem.Text = "UNIVERSAL TRANSVERSE MERCATOR ZONES";
             universalTransverseMercatorZonesToolStripMenuItem.Click += universalTransverseMercatorZonesToolStripMenuItem_Click;
             // 
             // toolStripSeparator4
             // 
             toolStripSeparator4.Name = "toolStripSeparator4";
-            toolStripSeparator4.Size = new Size(260, 6);
+            toolStripSeparator4.Size = new Size(305, 6);
             // 
             // άδειαΧρήσηςToolStripMenuItem
             // 
             άδειαΧρήσηςToolStripMenuItem.Name = "άδειαΧρήσηςToolStripMenuItem";
-            άδειαΧρήσηςToolStripMenuItem.Size = new Size(263, 22);
+            άδειαΧρήσηςToolStripMenuItem.Size = new Size(308, 22);
             άδειαΧρήσηςToolStripMenuItem.Text = "Άδεια Χρήσης";
             άδειαΧρήσηςToolStripMenuItem.Click += άδειαΧρήσηςToolStripMenuItem_Click;
             // 
@@ -232,7 +261,7 @@
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 5;
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 65F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 80F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 100F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
@@ -258,7 +287,7 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dataGridViewUtility.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewUtility.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewUtility.Columns.AddRange(new DataGridViewColumn[] { WGS84Lat, WGS84Lon, MGRS, ClearBTN, CoordinatesConvert });
+            dataGridViewUtility.Columns.AddRange(new DataGridViewColumn[] { WGS84Lat, WGS84Lon, MGRS, ClearBTN, CoordinatesConvert, AddToTable });
             dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = SystemColors.Window;
             dataGridViewCellStyle7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -268,7 +297,7 @@
             dataGridViewCellStyle7.WrapMode = DataGridViewTriState.False;
             dataGridViewUtility.DefaultCellStyle = dataGridViewCellStyle7;
             dataGridViewUtility.Dock = DockStyle.Fill;
-            dataGridViewUtility.Location = new Point(3, 93);
+            dataGridViewUtility.Location = new Point(3, 108);
             dataGridViewUtility.Name = "dataGridViewUtility";
             dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.BackColor = SystemColors.Control;
@@ -293,6 +322,7 @@
             WGS84Lat.DefaultCellStyle = dataGridViewCellStyle3;
             WGS84Lat.HeaderText = "WGS84-Πλάτος (Latitude)";
             WGS84Lat.Name = "WGS84Lat";
+            WGS84Lat.ToolTipText = "Εισάγετε το Πλάτος (Latitude) σε μορφή 40.0000";
             // 
             // WGS84Lon
             // 
@@ -301,6 +331,7 @@
             WGS84Lon.DefaultCellStyle = dataGridViewCellStyle4;
             WGS84Lon.HeaderText = "WGS84-Μήκος (Longitude)";
             WGS84Lon.Name = "WGS84Lon";
+            WGS84Lon.ToolTipText = "Εισάγετε το Μήκος (Longitude) σε μορφή 35.00000";
             // 
             // MGRS
             // 
@@ -309,6 +340,7 @@
             MGRS.DefaultCellStyle = dataGridViewCellStyle5;
             MGRS.HeaderText = "MGRS (Στρατιωτικές)";
             MGRS.Name = "MGRS";
+            MGRS.ToolTipText = "Εισάγετε τις Στρατιωτικές συντεταγμένες σε μορφή 35T MF 35000 38000";
             // 
             // ClearBTN
             // 
@@ -335,6 +367,14 @@
             CoordinatesConvert.ToolTipText = "Πατήστε για μετατροπή συντεταγμένων";
             CoordinatesConvert.UseColumnTextForButtonValue = true;
             // 
+            // AddToTable
+            // 
+            AddToTable.HeaderText = "Εισαγωγή στον Πίνακα";
+            AddToTable.Name = "AddToTable";
+            AddToTable.Text = "Εισαγωγή στο Πίνακα";
+            AddToTable.ToolTipText = "Πατήστε για να εισαχθούν οι συντεταγμένες σε νέα γραμμή του πίνακα";
+            AddToTable.UseColumnTextForButtonValue = true;
+            // 
             // richTextBox1
             // 
             richTextBox1.Dock = DockStyle.Fill;
@@ -343,7 +383,7 @@
             richTextBox1.Name = "richTextBox1";
             richTextBox1.ReadOnly = true;
             richTextBox1.ScrollBars = RichTextBoxScrollBars.None;
-            richTextBox1.Size = new Size(1078, 59);
+            richTextBox1.Size = new Size(1078, 74);
             richTextBox1.TabIndex = 5;
             richTextBox1.TabStop = false;
             richTextBox1.Text = resources.GetString("richTextBox1.Text");
@@ -371,10 +411,10 @@
             dataGridViewCellStyle12.WrapMode = DataGridViewTriState.False;
             dataGridView1.DefaultCellStyle = dataGridViewCellStyle12;
             dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(3, 210);
+            dataGridView1.Location = new Point(3, 225);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ScrollBars = ScrollBars.Vertical;
-            dataGridView1.Size = new Size(1078, 352);
+            dataGridView1.Size = new Size(1078, 337);
             dataGridView1.TabIndex = 2;
             dataGridView1.CellEndEdit += dataGridView1_CellEndEdit;
             dataGridView1.DataError += dataGridView1_DataError;
@@ -384,7 +424,7 @@
             label1.AutoSize = true;
             label1.Dock = DockStyle.Fill;
             label1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(3, 190);
+            label1.Location = new Point(3, 205);
             label1.Name = "label1";
             label1.Size = new Size(1078, 17);
             label1.TabIndex = 6;
@@ -440,11 +480,6 @@
         private DataGridView dataGridViewUtility;
         private RichTextBox richTextBox1;
         private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn WGS84Lat;
-        private DataGridViewTextBoxColumn WGS84Lon;
-        private DataGridViewTextBoxColumn MGRS;
-        private DataGridViewButtonColumn ClearBTN;
-        private DataGridViewButtonColumn CoordinatesConvert;
         private ToolStripLabel toolStripLabel2;
         private ToolStripMenuItem universalTransverseMercatorZonesToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator3;
@@ -453,5 +488,14 @@
         private ToolStripMenuItem οδηγίεςΧρήσηςToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator5;
         private Label label1;
+        private DataGridViewTextBoxColumn WGS84Lat;
+        private DataGridViewTextBoxColumn WGS84Lon;
+        private DataGridViewTextBoxColumn MGRS;
+        private DataGridViewButtonColumn ClearBTN;
+        private DataGridViewButtonColumn CoordinatesConvert;
+        private DataGridViewButtonColumn AddToTable;
+        private ToolStripMenuItem saveAsText;
+        private ToolStripSeparator toolStripSeparator6;
+        private ToolStripMenuItem saveAsCSV;
     }
 }

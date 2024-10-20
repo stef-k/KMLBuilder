@@ -1,4 +1,4 @@
-                     GNU AFFERO GENERAL PUBLIC LICENSE
+﻿                     GNU AFFERO GENERAL PUBLIC LICENSE
                        Version 3, 19 November 2007
 
 Copyright (C) 2024 Stef Kariotidis - stefk.me  
@@ -25,3 +25,6 @@ me at:
 Stef Kariotidis  
 https://stefk.me
 https://github.com/stef-k
+
+Ο πηγαίος κώδικας, είναι διαθέσιμος στη διεύθυνση:
+https://github.com/stef-k/KMLBuilder

@@ -44,7 +44,7 @@ namespace KMLBuilder
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void dataGridView1_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
@@ -99,7 +99,9 @@ namespace KMLBuilder
                 // Validate if the input is a valid decimal number
                 if (!decimal.TryParse(e.FormattedValue.ToString(), out decimal result))
                 {
-                    MessageBox.Show("Παρακαλώ εισάγετε έναν έγκυρο αριθμό.");
+                    MessageBox.Show("Παρακαλώ εισάγετε έναν έγκυρο αριθμό.", "Λάθος Δεδομένα",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    updateStatusBar("Παρακαλώ εισάγετε έναν έγκυρο αριθμό.");
                     e.Cancel = true; // Cancel the edit
                     return;
                 }
@@ -107,7 +109,9 @@ namespace KMLBuilder
                 // Check if Latitude or Longitude  is empty
                 if (string.IsNullOrWhiteSpace(e.FormattedValue.ToString()))
                 {
-                    MessageBox.Show("Το Πλάτος (Latitude ) και το Μήκος (Longitude ), είναι υποχρεωτικά πεδία.");
+                    MessageBox.Show("Το Πλάτος (Latitude ) και το Μήκος (Longitude ), είναι υποχρεωτικά πεδία.",
+                        "Ελλιπή Δεδομένα", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    updateStatusBar("Το Πλάτος (Latitude ) και το Μήκος (Longitude ), είναι υποχρεωτικά πεδία.");
                     e.Cancel = true; // Cancel the edit
                 }
             }
@@ -129,6 +133,7 @@ namespace KMLBuilder
             {
                 // Save the DataGridView data as KML to the stored path
                 SaveDataGridViewToKML(_kmlFilePath);
+                updateStatusBar($"Το αρχείο {Path.GetFileName(_kmlFilePath)} αποθηκεύτηκε με επιτυχία στο {_kmlFilePath}.");
             }
         }
 
@@ -146,6 +151,8 @@ namespace KMLBuilder
 
                     // Save the DataGridView data as KML
                     SaveDataGridViewToKML(_kmlFilePath);
+
+                    updateStatusBar($"Το αρχείο {Path.GetFileName(_kmlFilePath)} αποθηκεύτηκε με επιτυχία στο {_kmlFilePath}.");
                 }
             }
         }
@@ -243,12 +250,13 @@ namespace KMLBuilder
 
                         // Notify the DataGridView to refresh
                         waypointsBindingSource.ResetBindings(false);
-                        statusLabel.Text = $"Επιτυχής φόρτωση του KML αρχείου {filePath}";
+                        updateStatusBar($"Επιτυχής φόρτωση του KML αρχείου {Path.GetFileName(filePath)} από {filePath}");
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"Σφάλμα κατά τη φόρτωση του KML αρχείου: {ex.Message}");
-                        statusLabel.Text = $"Σφάλμα κατά τη φόρτωση του KML αρχείου";
+                        MessageBox.Show($"Σφάλμα κατά τη φόρτωση του KML αρχείου: {ex.Message}", "Σφάλμα Φόρτωσης",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        updateStatusBar($"Σφάλμα κατά τη φόρτωση του KML αρχείου");
                     }
                 }
             }
@@ -303,15 +311,18 @@ namespace KMLBuilder
                     writer.WriteLine("</kml>");
                 }
                 // Update the status strip on successful save
-                statusLabel.Text = $"Το αρχείο KML {filePath} αποθηκεύτηκε με επιτυχία!";
-                MessageBox.Show("Το αρχείο KML αποθηκεύτηκε με επιτυχία!", "Αποθήκευση Ως KML", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                updateStatusBar($"Το αρχείο KML {filePath} αποθηκεύτηκε με επιτυχία!");
+                MessageBox.Show("Το αρχείο KML αποθηκεύτηκε με επιτυχία!", "Αποθήκευση Ως KML",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
 
             catch (Exception ex)
             {
                 // Handle exceptions and update status
-                statusLabel.Text = $"Σφάλμα κατά την αποθήκευση: {ex.Message}";
+                MessageBox.Show($"Σφάλμα κατά την αποθήκευση: {ex.Message}", "Σφάλμα Αποθήκευσης",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                updateStatusBar($"Σφάλμα κατά την αποθήκευση: {ex.Message}");
             }
         }
 
@@ -433,6 +444,29 @@ namespace KMLBuilder
                     // probably do nothing a cell or multiple cells in the conversion util are empty 
                 }
             }
+            // insert converted coordinates bellow
+            if (e.ColumnIndex == 5)
+            {
+                var firstCell = dataGridViewUtility.Rows[0].Cells[0].Value;
+                var secondCell = dataGridViewUtility.Rows[0].Cells[1].Value;
+                // check if we have WGS84 coordinates
+                if (firstCell != null && secondCell != null)
+                {
+                    if (!string.IsNullOrEmpty(firstCell.ToString()) && !string.IsNullOrEmpty(secondCell.ToString()))
+                    {
+                        var wp = new Waypoint();
+                        wp.Longitude = Convert.ToDecimal(secondCell.ToString().Trim());
+                        wp.Latitude = Convert.ToDecimal(firstCell.ToString().Trim());
+                        bindingList.Add(wp);
+                    }
+                }
+                else
+                {
+                    updateStatusBar("Δεν υπάρχουν συντεταγμένες στα πεδία Μήκος-Πλάτος για εισαγωγή στον πίνακα!");
+                    MessageBox.Show("Δεν υπάρχουν συντεταγμένες στα πεδία Μήκος-Πλάτος για εισαγωγή στον πίνακα!",
+                        "Απουσία Συντεταγμένων", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
         }
 
         private void universalTransverseMercatorZonesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -451,6 +485,84 @@ namespace KMLBuilder
         {
             var helpPopUp = new Help();
             helpPopUp.ShowDialog(this);
+        }
+
+        // Update the status bar
+        private void updateStatusBar(string message)
+        {
+            statusLabel.Text = message;
+        }
+
+        private void saveAsText_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Filter = "Αρχεία Κειμένου (*.txt)|*.txt|All Files (*.*)|*.*";
+                saveFileDialog.Title = "Αποθήκευση Ως Αρχείο Κειμένου";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    // Store the file path for later use
+                    string filePath = saveFileDialog.FileName;
+
+                    // Save the DataGridView data as KML
+                    using (StreamWriter writer = new StreamWriter(filePath))
+                    {
+                        // Loop through rows
+                        foreach (DataGridViewRow row in dataGridView1.Rows)
+                        {
+                            if (row.IsNewRow) continue;
+                            string latitude = row.Cells[0].Value?.ToString();
+                            string longitude = row.Cells[1].Value?.ToString();
+                            string details = row.Cells[2].Value?.ToString();
+                            if (!string.IsNullOrWhiteSpace(latitude) &&
+                            !string.IsNullOrWhiteSpace(longitude))
+                            {
+                                writer.Write($"{details} Μήκος (Longitude): {longitude}, Πλάτος (Latitude) {latitude}");
+                            }
+                            writer.WriteLine(); // Move to the next line for the next row
+                        }
+                    }
+
+                    updateStatusBar($"Το αρχείο {Path.GetFileName(filePath)} αποθηκεύτηκε με επιτυχία στο {filePath}.");
+                }
+            }
+        }
+
+        private void saveAsCSV_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Filter = "Αρχεία CSV (*.cvs)|*.csv|All Files (*.*)|*.*";
+                saveFileDialog.Title = "Αποθήκευση Ως Αρχείο CSV";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    // Store the file path for later use
+                    string filePath = saveFileDialog.FileName;
+
+                    // Save the DataGridView data as KML
+                    using (StreamWriter writer = new StreamWriter(filePath))
+                    {
+                        // Loop through rows
+                        foreach (DataGridViewRow row in dataGridView1.Rows)
+                        {
+                            if (row.IsNewRow) continue;
+                            string latitude = row.Cells[0].Value?.ToString();
+                            string longitude = row.Cells[1].Value?.ToString();
+                            string details = row.Cells[2].Value?.ToString();
+                            if (!string.IsNullOrWhiteSpace(latitude) &&
+                            !string.IsNullOrWhiteSpace(longitude))
+                            {
+                                writer.Write($"{details},{longitude},{latitude}");
+                            }
+                            writer.WriteLine(); // Move to the next line for the next row
+                        }
+                    }
+
+                    updateStatusBar($"Το αρχείο {Path.GetFileName(filePath)} αποθηκεύτηκε με επιτυχία στο {filePath}.");
+                }
+            }
         }
     }
 }
