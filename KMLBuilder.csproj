@@ -8,6 +8,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Description>Δημιουργία αρχείων KML 2.2 από συντεταγμένες  WGS 84.
 
+https://stefk.me
+https://github.com/stef-k/KMLBuilder
+
 Third Party Libraries:
 CoordinateSharp: https://github.com/Tronald/CoordinateSharp</Description>
     <Copyright>@2024 Stef K</Copyright>

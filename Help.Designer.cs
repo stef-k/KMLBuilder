@@ -39,7 +39,7 @@
             richTextBox1.Location = new Point(0, 0);
             richTextBox1.Name = "richTextBox1";
             richTextBox1.ReadOnly = true;
-            richTextBox1.ScrollBars = RichTextBoxScrollBars.None;
+            richTextBox1.ScrollBars = RichTextBoxScrollBars.Vertical;
             richTextBox1.Size = new Size(800, 611);
             richTextBox1.TabIndex = 0;
             richTextBox1.Text = resources.GetString("richTextBox1.Text");

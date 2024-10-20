@@ -117,17 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="richTextBox1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="richTextBox1.Text" xml:space="preserve">
     <value>1. ΧΡΗΣΗ ΔΕΚΑΔΙΚΩΝ
 
 Οι συντεταγμένες, αποτυπώνονται στην εφαρμογή ως δεκαδικοί αριθμοί.
 Χρησιμοποιείστε πάντα και παντού τελεία ( . ) για διαχωρισμό των δεκαδικών όχι κόμμα ( , )
-    Παράδειγμα: 40.0123 24.340
+   
+Παράδειγμα: 40.0123 24.340
 
 2. ΜΕΤΑΤΡΟΠΕΑΣ WGS 84 - MGRS (Στρατιωτικό Σύστημα Συντεταγμένων)
 
 Η πρώτη σειρά πεδίων, είναι προαιρετική και χρησιμοποιείται για τη μετατροπή μεταξύ των
 συστημάτων συντεταγμένων WGS 84 και MGRS.
+
+Οι Στρατιωτικού τύπου (MGRS) συντεταγμένες, θα πρέπει να έχουν την παρακάτω μορφή:
+
+ΧΧΧ ΧΧ ΧΧΧΧΧ ΧΧΧΧΧ όπου:
+
+- Οι 3 πρώτοι χαρακτήρες είναι το Grid Zone Designator (GZD), το οποίο μπορείτε να το βρείτε από το μενού UNIVERSAL TRANSVERSE MERCATOR ZONES.
+- Οι 2 επόμενοι χαρακτήρες είναι το αναγνωριστικό του τετραγώνου.
+- Οι επόμενες 2 πεντάδες χαρακτήρων, είναι οι συντεταγμένες.
+
+Για παραπάνω πληροφορίες, ανατρέξτε στο https://en.wikipedia.org/wiki/Military_Grid_Reference_System
 
 3. ΔΗΜΙΟΥΡΓΙΑ ΑΡΧΕΙΩΝ KML
 
@@ -144,7 +158,21 @@
 Η εφαρμογή, εξάγει αρχεία KML με το πρότυπο KML 2.2. Πληροφορίες μπορείτε να βρείτε στους συνδέσμους:
 
 https://www.ogc.org/publications/standard/kml/
-https://developers.google.com/kml/documentation/kmlreference</value>
+https://developers.google.com/kml/documentation/kmlreference
+
+6. ΕΞΑΓΩΓΗ ΑΡΧΕΙΩΝ ΚΕΙΜΕΝΟΥ (txt)
+
+Υπάρχει η δυνατότητα αποθήκευσης των δεδομένων του πίνακα με τα σημεία σε μορφή απλού κειμένου (txt), στην οποία τα δεδομένα έχουν την εξής μορφή: 
+
+Όνομα σημείου, Μήκος, Πλάτος
+
+Από το μενού Αρχείο, επιλέξτε Εξαγωγή  Αρχείου σε Κείμενο
+
+7. ΕΞΑΓΩΓΗ ΑΡΧΕΙΩΝ COMMA SEPARATED VALUES (CSV)
+
+Υπάρχει η δυνατότητα αποθήκευσης των δεδομένων του πίνακα με τα σημεία, σε μορφή Comma Separated Values (CSV), η οποία είναι χρήσιμη καθώς αναγνωρίζεται από το EXCEL και άλλες αντίστοιχες εφαρμογές.
+
+Από το μενού Αρχείο, επιλέξτε Εξαγωγή  Αρχείου ως CSV</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

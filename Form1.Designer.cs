@@ -182,7 +182,7 @@
             // 
             // βοήθειαToolStripMenuItem
             // 
-            βοήθειαToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { πληροφορίεςToolStripMenuItem, toolStripSeparator3, οδηγίεςΧρήσηςToolStripMenuItem, toolStripSeparator5, universalTransverseMercatorZonesToolStripMenuItem, toolStripSeparator4, άδειαΧρήσηςToolStripMenuItem });
+            βοήθειαToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { οδηγίεςΧρήσηςToolStripMenuItem, toolStripSeparator5, universalTransverseMercatorZonesToolStripMenuItem, toolStripSeparator4, πληροφορίεςToolStripMenuItem, toolStripSeparator3, άδειαΧρήσηςToolStripMenuItem });
             βοήθειαToolStripMenuItem.Name = "βοήθειαToolStripMenuItem";
             βοήθειαToolStripMenuItem.Size = new Size(62, 20);
             βοήθειαToolStripMenuItem.Text = "Βοήθεια";
