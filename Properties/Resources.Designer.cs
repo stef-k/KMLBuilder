@@ -59,5 +59,15 @@ namespace KMLBuilder.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Universal_Transverse_Mercator_zones {
+            get {
+                object obj = ResourceManager.GetObject("Universal_Transverse_Mercator_zones", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

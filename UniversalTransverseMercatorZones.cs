@@ -21,7 +21,12 @@ namespace KMLBuilder
                 Dock = DockStyle.Fill,
                 SizeMode = PictureBoxSizeMode.Zoom // Change as needed
             };
-            pictureBox.Image = Image.FromFile("Universal_Transverse_Mercator_zones.png");
+            byte[] imageData = Properties.Resources.Universal_Transverse_Mercator_zones;
+            using(MemoryStream ms = new MemoryStream(imageData))
+            {
+                pictureBox.Image = Image.FromStream(ms);
+            }
+
             this.Controls.Add(pictureBox);
             this.WindowState = FormWindowState.Maximized;
         }

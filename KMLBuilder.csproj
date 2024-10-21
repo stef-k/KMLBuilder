@@ -50,14 +50,14 @@ CoordinateSharp: https://github.com/Tronald/CoordinateSharp</Description>
       <PackagePath>\</PackagePath>
     </None>
     <None Update="KMLBuilder.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
     <None Update="README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
     <None Update="Universal_Transverse_Mercator_zones.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
